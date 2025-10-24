@@ -1,4 +1,4 @@
-package store.order;
+package store.order.get;
 
 import api.BaseClient;
 import api.store.StoreApi;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import steps.common.CommonAsserts;
 import steps.store.StoreSteps;
 import steps.store.StoreWaiters;
-import store.BaseStoreTest;
+import store.order.BaseStoreOrderTest;
 import utils.Utils;
 
 import java.util.Random;
@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.given;
 
 @Epic("Petstore")
 @Feature("Store")
-public class GetOrderByIdNegativeTests extends BaseStoreTest {
+public class GetOrderByIdNegativeTests extends BaseStoreOrderTest {
 
     @Test(description = "Get order not found")
     public void getOrderNotFoundTest() {
@@ -84,7 +84,7 @@ public class GetOrderByIdNegativeTests extends BaseStoreTest {
         StoreSteps.placeOrderSuccessfully(OrderCreationalHelpers.createRandomOrder(orderId));
 
         //TODO add waiter with check db that order is created instead of polling get order by id
-        StoreWaiters.waitForOrderBeCreated(orderId);
+        StoreWaiters.waitForOrderBePlaced(orderId);
 
         StoreApi.deleteOrder(orderId).statusCode(200);
         //TODO add waiter with check that order is really deleted from db, instead of sleep as it is bad practice

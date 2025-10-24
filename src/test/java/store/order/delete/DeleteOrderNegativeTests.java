@@ -1,4 +1,4 @@
-package store.delete;
+package store.order.delete;
 
 import api.BaseClient;
 import api.store.StoreApi;
@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.store.StoreSteps;
 import steps.store.StoreWaiters;
-import store.BaseStoreTest;
+import store.order.BaseStoreOrderTest;
 import utils.Utils;
 
 import java.util.Random;
@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.given;
 
 @Epic("Petstore")
 @Feature("Store")
-public class DeleteOrderNegativeTests extends BaseStoreTest {
+public class DeleteOrderNegativeTests extends BaseStoreOrderTest {
 
     private Order orderToDelete2;
 
@@ -30,7 +30,7 @@ public class DeleteOrderNegativeTests extends BaseStoreTest {
         orderToDelete2 = helpers.OrderCreationalHelpers.createRandomOrder(orderId);
         StoreSteps.placeOrder(orderToDelete2);
         //TODO add waiter with check db that order is created instead of polling get order by id
-        StoreWaiters.waitForOrderBeCreated(orderId);
+        StoreWaiters.waitForOrderBePlaced(orderId);
     }
 
     @Test(description = "Delete order not found")

@@ -3,17 +3,17 @@
 <suite name="Store API Suite" parallel="methods" thread-count="3">
     <test name="Create order">
         <packages>
-            <package name="store.create.*"/>
+            <package name="store.order.place.*"/>
         </packages>
     </test>
     <test name="Delete order">
         <packages>
-            <package name="store.delete.*"/>
+            <package name="store.order.delete.*"/>
         </packages>
     </test>
     <test name="Get order by id">
         <packages>
-            <package name="store.order.*"/>
+            <package name="store.order.get.*"/>
         </packages>
     </test>
     <test name="Get inventory">

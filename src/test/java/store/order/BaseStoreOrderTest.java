@@ -1,4 +1,4 @@
-package store;
+package store.order;
 
 import api.store.StoreApi;
 import io.qameta.allure.Epic;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @Epic("Petstore")
 @Feature("Store")
-public abstract class BaseStoreTest {
+public abstract class BaseStoreOrderTest {
 
     protected ArrayList<Integer> toDeleteOrderIds = new ArrayList<>();
 

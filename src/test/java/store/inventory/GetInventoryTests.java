@@ -7,7 +7,7 @@ import io.restassured.common.mapper.TypeRef;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.annotations.Test;
 import steps.store.StoreAsserts;
-import store.BaseStoreTest;
+import store.order.BaseStoreOrderTest;
 
 import java.util.Map;
 
@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.isA;
 
 @Epic("Petstore")
 @Feature("Store")
-public class GetInventoryTests extends BaseStoreTest {
+public class GetInventoryTests extends BaseStoreOrderTest {
 
     @Test(description = "Get inventory returns map of status and quantity")
     public void inventoryReturnsMapTest() {

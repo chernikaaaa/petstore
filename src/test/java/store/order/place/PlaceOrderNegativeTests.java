@@ -1,4 +1,4 @@
-package store.create;
+package store.order.place;
 
 import api.BaseClient;
 import helpers.OrderCreationalHelpers;
@@ -7,7 +7,7 @@ import io.qameta.allure.Feature;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.common.CommonAsserts;
-import store.BaseStoreTest;
+import store.order.BaseStoreOrderTest;
 import utils.Utils;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import static io.restassured.RestAssured.given;
 
 @Epic("Petstore")
 @Feature("Store")
-public class CreateOrderNegativeTests extends BaseStoreTest {
+public class PlaceOrderNegativeTests extends BaseStoreOrderTest {
 
     @Test(description = "Place order with empty body failed test")
     public void placeOrderWithEmptyBodyFailedTest() {

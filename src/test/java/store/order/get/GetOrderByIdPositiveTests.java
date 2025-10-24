@@ -1,4 +1,4 @@
-package store.order;
+package store.order.get;
 
 import api.store.StoreApi;
 import api.store.models.Order;
@@ -11,28 +11,28 @@ import org.testng.annotations.Test;
 import steps.store.StoreAsserts;
 import steps.store.StoreSteps;
 import steps.store.StoreWaiters;
-import store.BaseStoreTest;
+import store.order.BaseStoreOrderTest;
 
 @Epic("Petstore")
 @Feature("Store")
-public class GetOrderByIdPositiveTests extends BaseStoreTest {
+public class GetOrderByIdPositiveTests extends BaseStoreOrderTest {
 
     private Order returnedOrder;
-    private Order createdOrder;
+    private Order placedOrder;
     private Integer orderId;
 
     @BeforeClass(alwaysRun = true)
     private void setup() {
         orderId = generateRandomOrderId();
         var randomOrder = OrderCreationalHelpers.createRandomOrder(orderId);
-        createdOrder = StoreSteps.placeOrderSuccessfully(randomOrder);
+        placedOrder = StoreSteps.placeOrderSuccessfully(randomOrder);
         //TODO add waiter with check db that order is created instead of polling get order by id
-        returnedOrder = StoreWaiters.waitForOrderBeCreated(orderId);
+        returnedOrder = StoreWaiters.waitForOrderBePlaced(orderId);
     }
 
     @Test(description = "Get order by id successfully")
     public void getOrderSuccessfullyTest() {
-        StoreAsserts.assertOrdersMatch(returnedOrder, createdOrder);
+        StoreAsserts.assertOrdersMatch(returnedOrder, placedOrder);
     }
 
     @Test(description = "Get order by id schema validation test")

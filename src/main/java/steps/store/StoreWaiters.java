@@ -15,10 +15,10 @@ public class StoreWaiters {
         BaseUtility.getException();
     }
 
-    @Step("Wait for order with id {orderId} to be created")
-    public static Order waitForOrderBeCreated(int orderId) {
+    @Step("Wait for order with id {orderId} to be placed")
+    public static Order waitForOrderBePlaced(int orderId) {
         var result = new AtomicReference<Order>();
-        Awaitility.await("Wait until order with id %s is created".formatted(orderId))
+        Awaitility.await("Wait until order with id %s is placed".formatted(orderId))
                   .atMost(Duration.ofSeconds(10))
                   .pollInterval(Duration.ofMillis(250))
                   .untilAsserted(() -> {

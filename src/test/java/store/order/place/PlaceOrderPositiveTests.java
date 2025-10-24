@@ -1,4 +1,4 @@
-package store.create;
+package store.order.place;
 
 import api.store.models.Order;
 import helpers.OrderCreationalHelpers;
@@ -9,21 +9,21 @@ import org.testng.annotations.Test;
 import steps.store.StoreAsserts;
 import steps.store.StoreSteps;
 import steps.store.StoreWaiters;
-import store.BaseStoreTest;
+import store.order.BaseStoreOrderTest;
 
 @Epic("Petstore")
 @Feature("Store")
-public class CreateOrderPositiveTests extends BaseStoreTest {
+public class PlaceOrderPositiveTests extends BaseStoreOrderTest {
 
-    @Test(description = "Successfully create order")
-    public void successfullyCreateOrderTest() {
+    @Test(description = "Successfully place order")
+    public void successfullyPlaceOrderTest() {
         var orderId = generateRandomOrderId();
         var randomOrder = OrderCreationalHelpers.createRandomOrder(orderId);
-        var createdOrder = StoreSteps.placeOrderSuccessfully(randomOrder);
-        toDeleteOrderIds.add(createdOrder.getId());
-        StoreAsserts.assertOrdersMatch(createdOrder, randomOrder);
+        var placedOrder = StoreSteps.placeOrderSuccessfully(randomOrder);
+        toDeleteOrderIds.add(placedOrder.getId());
+        StoreAsserts.assertOrdersMatch(placedOrder, randomOrder);
         //TODO add waiter with check db that order is created instead of polling get order by id
-        StoreWaiters.waitForOrderBeCreated(orderId);
+        StoreWaiters.waitForOrderBePlaced(orderId);
     }
 
     @Test(description = "Place order without id successfully")
@@ -33,10 +33,10 @@ public class CreateOrderPositiveTests extends BaseStoreTest {
     }
 
     @Test(description = "Create order schema validation test")
-    public void createOrderSchemaValidationTest() {
+    public void placeOrderSchemaValidationTest() {
         StoreSteps.placeOrder(OrderCreationalHelpers.createRandomOrder(generateRandomOrderId()))
                   .assertThat()
-                  .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/store/create-order.json"));
+                  .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/store/place-order.json"));
     }
 
 }
