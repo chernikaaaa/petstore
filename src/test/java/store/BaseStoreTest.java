@@ -18,7 +18,7 @@ public abstract class BaseStoreTest {
     protected static int generateRandomOrderId() {
         var nextId = Utils.getRandomInt();
         while (StoreApi.getOrderById(nextId).extract().statusCode() == 200) {
-            nextId += 200;
+            nextId = nextId + Utils.getRandomInt() + 2000;
         }
         return nextId;
     }

@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import steps.store.StoreSteps;
+import steps.store.StoreWaiters;
 import store.BaseStoreTest;
 import utils.Utils;
 
@@ -25,14 +26,11 @@ public class DeleteOrderNegativeTests extends BaseStoreTest {
 
     @BeforeClass(alwaysRun = true)
     public void setupPreconditions() {
-        orderToDelete2 = helper.OrderCreationalHelpers.createRandomOrder(generateRandomOrderId());
+        var orderId = generateRandomOrderId();
+        orderToDelete2 = helper.OrderCreationalHelpers.createRandomOrder(orderId);
         StoreSteps.placeOrder(orderToDelete2);
-        //TODO add waiter with check db that order is created (instead I use sleep but it is a bad practice)
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        //TODO add waiter with check db that order is created instead of polling get order by id
+        StoreWaiters.waitForOrderBeCreated(orderId);
     }
 
     @Test(description = "Delete order not found")

@@ -20,8 +20,8 @@ public class OrderCreationalHelpers {
     public static Order createRandomOrder(Integer id) {
         return Order.builder()
                     .id(id)
-                    .petId(Utils.getRandomInt())
-                    .quantity(Utils.getRandomInt())
+                    .petId(Utils.getRandomInt(1, 10))
+                    .quantity(Utils.getRandomInt(1, 10))
                     .shipDate(LocalDateTime.now().toString())
                     .status(StoreUtils.getRandomStatus())
                     .complete(new Random().nextBoolean())

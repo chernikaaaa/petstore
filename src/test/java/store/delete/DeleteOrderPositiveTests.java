@@ -7,6 +7,7 @@ import io.qameta.allure.Feature;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import steps.store.StoreSteps;
+import steps.store.StoreWaiters;
 import store.BaseStoreTest;
 
 @Epic("Petstore")
@@ -17,14 +18,11 @@ public class DeleteOrderPositiveTests extends BaseStoreTest {
 
     @BeforeClass(alwaysRun = true)
     public void setupPreconditions() {
-        orderToDelete = helper.OrderCreationalHelpers.createRandomOrder(generateRandomOrderId());
+        var orderId = generateRandomOrderId();
+        orderToDelete = helper.OrderCreationalHelpers.createRandomOrder(orderId);
         StoreSteps.placeOrder(orderToDelete);
-        //TODO add waiter with check db that order is created (instead I use sleep but it is a bad practice)
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        //TODO add waiter with check db that order is created instead of polling get order by id
+        StoreWaiters.waitForOrderBeCreated(orderId);
     }
 
     //there isn't such status code in doc

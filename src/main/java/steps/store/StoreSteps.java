@@ -14,7 +14,16 @@ public class StoreSteps {
 
     @Step("Place order: {order}")
     public static ValidatableResponse placeOrder(Order order) {
-        return StoreApi.placeOrder(order).statusCode(200);
+        return StoreApi.placeOrder(order)
+                       .statusCode(200);
+    }
+
+    @Step("Place order: {order} successfully")
+    public static Order placeOrderSuccessfully(Order order) {
+        return placeOrder(order)
+                .extract()
+                .response()
+                .as(Order.class);
     }
 
 }

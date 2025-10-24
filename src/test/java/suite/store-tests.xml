@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Store API Suite" parallel="methods" thread-count="3">
+    <test name="Create order">
+        <packages>
+            <package name="store.create.*"/>
+        </packages>
+    </test>
+    <test name="Delete order">
+        <packages>
+            <package name="store.delete.*"/>
+        </packages>
+    </test>
+    <test name="Get order by id">
+        <packages>
+            <package name="store.order.*"/>
+        </packages>
+    </test>
+    <test name="Get inventory">
+        <packages>
+            <package name="store.inventory.*"/>
+        </packages>
+    </test>
+</suite>

@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import utils.BaseUtility;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class StoreAsserts {
@@ -22,21 +23,27 @@ public class StoreAsserts {
         Assertions.assertThat(response).allSatisfy((key, value) -> SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(key).as("Inventory map key should be a String").isInstanceOf(String.class);
             softly.assertThat(value).as("Inventory map value should be a Double").isInstanceOf(Double.class);
+            softly.assertThat((Double) value)
+                  .as("Inventory quantity should be non-negative")
+                  .isGreaterThanOrEqualTo(0.0);
         }));
+        Assertions.assertThat(response.keySet().stream().distinct())
+                  .as("Inventory map keys should match order status values")
+                  .containsExactlyInAnyOrderElementsOf(Arrays.stream(Order.Status.values()).map(Enum::name).toList());
     }
 
-    public static void assertOrdersMatch(Order createdOrder, Order randomOrder) {
+    public static void assertOrdersMatch(Order actualOrder, Order expectedOrder) {
         SoftAssertions.assertSoftly(softly -> {
-            softly.assertThat(createdOrder)
+            softly.assertThat(actualOrder)
                   .usingRecursiveComparison()
                   .ignoringFields("shipDate")
                   .as("Created order should match the sent order")
-                  .isEqualTo(randomOrder);
+                  .isEqualTo(expectedOrder);
 
             //cut to show only date and time without milliseconds and timezone for comparison
-            softly.assertThat(createdOrder.getShipDate().substring(0, 19))
+            softly.assertThat(actualOrder.getShipDate().substring(0, 19))
                   .as("Ship date should match")
-                  .isEqualTo(randomOrder.getShipDate().substring(0, 19));
+                  .isEqualTo(expectedOrder.getShipDate().substring(0, 19));
         });
     }
 

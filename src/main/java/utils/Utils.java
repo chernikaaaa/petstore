@@ -58,6 +58,10 @@ public final class Utils {
     public static int getRandomInt() {
         var min = 10;
         var max = 1000;
+        return getRandomInt(min, max);
+    }
+
+    public static int getRandomInt(int min, int max) {
         return RANDOM.nextInt((max - min) + 1) + min;
     }
 
