@@ -37,4 +37,16 @@ public class GetInventoryTests extends BaseStoreOrderTest {
                 .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/store/get-inventory.json"));
     }
 
+    @Test(description = "Get inventory without token test")
+    public void getInventoryWithoutTokenTest() {
+        //401 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
+    @Test(description = "Get inventory with user without accesses test")
+    public void getInventoryWithUserWithoutAccessesTest() {
+        //403 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
 }

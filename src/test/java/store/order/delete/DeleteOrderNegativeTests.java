@@ -95,4 +95,16 @@ public class DeleteOrderNegativeTests extends BaseStoreOrderTest {
                 .statusCode(400);
     }
 
+    @Test(description = "Delete order without token test")
+    public void deleteOrderWithoutTokenTest() {
+        //401 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
+    @Test(description = "Delete order with user without accesses test")
+    public void deleteOrderWithUserWithoutAccessesTest() {
+        //403 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
 }

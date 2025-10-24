@@ -1,0 +1,39 @@
+When writing the tests, I added JSON response validation everywhere.
+The only exception is in the Store → Delete Order test, because the documentation doesn’t specify a 200
+response code or any response body at all - although it actually can be deleted with 200 error code.
+I could have based the json schema on the actual response, but I decided not to do it,
+ since in a real project I would first clarify the requirements instead of assuming or inventing them myself.
+
+I also tried to cover both positive and negative scenarios wherever possible.
+However, the negative cases are somewhat limited because the backend implementation itself is incomplete.
+I chose to approach this as I would in a real-life situation — by writing tests based on how it should work,
+and leaving open points to discuss with the business analysts and backend team.
+In that case, either the backend would be updated according to the documentation,
+or aqa side and documentation would be changed after discussions.
+
+This specifically applies to tests with invalid IDs, since both in Store → GET Order and Store → DELETE Order
+we receive a 404 instead of the 400 as it is mentioned in the documentation.
+There’s also no input validation implemented for Store → Create Order, so those tests currently fail -
+although validation should definitely exist.
+
+Initially, I assumed that GET Inventory displayed all existing in Order -> Status statuses and nothing else,
+but that turned out to be incorrect - there’s some incoordination there which can’t be clearly understood just
+from the Swagger docs.
+If the intended behavior were that it reflects all the statuses from Create Order,
+I would have added a test verifying that when new orders with specific statuses are created,
+the corresponding count increases.
+However, such a test would be flaky because the inventory might be updated (orders deleted) simultaneously in the database
+- so I would leave that for manual testing.
+The same goes for the reverse case (count decreasing), which would also be better verified manually.
+
+In addition, I added short*comments above certain tests to explain the issues or inconsistencies I found,
+so it’s clear what exactly needs clarification or fixing.
+
+I also added comments noting where waiters with database checks should be implemented in the future.
+I couldn’t include them myself because I don’t know anything about accesses to the database this task.
+
+It would also be good to add tests for authentication and authorization to verify 401 and 403 errors -
+if this were a real project with a secured API and defined user roles. I’ve added placeholders for such tests.
+
+I wasn’t sure whether I was allowed to use AssertJ for assertions or only TestNG,
+but I chose to use AssertJ because it makes the assertions more readable and elegant.

@@ -94,4 +94,16 @@ public class GetOrderByIdNegativeTests extends BaseStoreOrderTest {
         CommonAsserts.assertFailedResponseMessage(response, "Order not found");
     }
 
+    @Test(description = "Get order by id without token test")
+    public void getOrderByIdWithoutTokenTest() {
+        //401 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
+    @Test(description = "Get order by id with user without accesses test")
+    public void getOrderByIdWithUserWithoutAccessesTest() {
+        //403 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
 }

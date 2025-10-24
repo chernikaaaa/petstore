@@ -40,4 +40,16 @@ public class PlaceOrderPositiveTests extends BaseStoreOrderTest {
                   .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/store/place-order.json"));
     }
 
+    @Test(description = "Place order by id without token test")
+    public void placeOrderByIdWithoutTokenTest() {
+        //401 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
+    @Test(description = "Place order by id with user without accesses test")
+    public void placeOrderByIdWithUserWithoutAccessesTest() {
+        //403 error handling
+        //if this were a real project with a secured API and defined user roles
+    }
+
 }
