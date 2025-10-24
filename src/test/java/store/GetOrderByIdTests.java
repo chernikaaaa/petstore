@@ -24,7 +24,7 @@ public class GetOrderByIdTests extends BaseStoreTest {
     public void getOrder404AfterDelete() {
         var order = OrderCreationalHelpers.createRandomOrder(generateRandomOrderId());
 
-        int id = StoreApi.placeOrder(order).statusCode(anyOf(is(200), is(201))).extract().jsonPath().getInt("id");
+        var id = StoreApi.placeOrder(order).statusCode(anyOf(is(200), is(201))).extract().jsonPath().getInt("id");
 
         StoreApi.deleteOrder(id).statusCode(anyOf(is(200), is(204), is(404))); // petstore is flaky
 

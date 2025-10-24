@@ -18,9 +18,19 @@ import static io.restassured.RestAssured.given;
 @Feature("Store")
 public class CreateOrderNegativeTests extends BaseStoreTest {
 
+    @Test(description = "Place order with empty body failed test")
+    public void placeOrderWithEmptyBodyFailedTest() {
+        var response = given()
+                .spec(BaseClient.spec)
+                .when()
+                .post("/store/order")
+                .then()
+                .statusCode(400);
+        CommonAsserts.assertFailedResponseMessage(response, "No data");
+    }
+
     @DataProvider(name = "invalidOrders")
     public Object[][] invalidOrders() {
-
         var randomOrder = OrderCreationalHelpers.createRandomOrder(generateRandomOrderId());
         var orderMap = Utils.objectToMap(randomOrder);
 
@@ -102,7 +112,7 @@ public class CreateOrderNegativeTests extends BaseStoreTest {
 
     //validations on dev side need to be added
     @Test(dataProvider = "invalidOrders")
-    public void shouldReturn400ForInvalidOrders(String body, String expectedMessage) {
+    public void placeOrderWithInvalidDataFailedTest(String body, String expectedMessage) {
         var response = given()
                 .spec(BaseClient.spec)
                 .body(body)
@@ -111,17 +121,6 @@ public class CreateOrderNegativeTests extends BaseStoreTest {
                 .then()
                 .statusCode(400);
         CommonAsserts.assertFailedResponseMessage(response, expectedMessage);
-    }
-
-    @Test(description = "Place order with empty body failed test")
-    public void placeOrderWithEmptyBodyFailedTest() {
-        var response = given()
-                .spec(BaseClient.spec)
-                .when()
-                .post("/store/order")
-                .then()
-                .statusCode(400);
-        CommonAsserts.assertFailedResponseMessage(response, "No data");
     }
 
 }

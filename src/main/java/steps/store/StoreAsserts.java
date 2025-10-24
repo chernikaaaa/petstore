@@ -34,9 +34,9 @@ public class StoreAsserts {
                   .isEqualTo(randomOrder);
 
             //cut to show only date and time without milliseconds and timezone for comparison
-            softly.assertThat(createdOrder.shipDate().substring(0, 19))
+            softly.assertThat(createdOrder.getShipDate().substring(0, 19))
                   .as("Ship date should match")
-                  .isEqualTo(randomOrder.shipDate().substring(0, 19));
+                  .isEqualTo(randomOrder.getShipDate().substring(0, 19));
         });
     }
 

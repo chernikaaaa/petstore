@@ -18,12 +18,14 @@ public class OrderCreationalHelpers {
 
     @Step("Create random order with id {id}")
     public static Order createRandomOrder(Integer id) {
-        return new Order(id,
-                         Utils.getRandomInt(),
-                         Utils.getRandomInt(),
-                         LocalDateTime.now().toString(),
-                         StoreUtils.getRandomStatus(),
-                         new Random().nextBoolean());
+        return Order.builder()
+                    .id(id)
+                    .petId(Utils.getRandomInt())
+                    .quantity(Utils.getRandomInt())
+                    .shipDate(LocalDateTime.now().toString())
+                    .status(StoreUtils.getRandomStatus())
+                    .complete(new Random().nextBoolean())
+                    .build();
     }
 
 }

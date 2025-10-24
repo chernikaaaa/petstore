@@ -1,13 +1,25 @@
 package api.store.models;
 
-public record Order(
-        Integer id,
-        Integer petId,
-        Integer quantity,
-        String shipDate,
-        Status status,
-        Boolean complete
-) {
+import com.beust.jcommander.internal.Nullable;
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class Order {
+
+    @Nullable
+    private Integer id;
+    @Nullable
+    private Integer petId;
+    @Nullable
+    private Integer quantity;
+    @Nullable
+    private String shipDate;
+    @Nullable
+    private Status status;
+    @Nullable
+    private Boolean complete;
 
     public enum Status {
         placed,
