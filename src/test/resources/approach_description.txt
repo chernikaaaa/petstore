@@ -1,3 +1,7 @@
+Approach to testing:
+Focused on creating clear, maintainable, and requirement-based tests. Covered both positive and negative scenarios,
+validated JSON responses, and aligned behavior with API documentation wherever possible.
+
 When writing the tests, I added JSON response validation everywhere.
 The only exception is in the Store → Delete Order test, because the documentation doesn’t specify a 200
 response code or any response body at all - although it actually can be deleted with 200 error code.
