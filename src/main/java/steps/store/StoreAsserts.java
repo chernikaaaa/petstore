@@ -1,6 +1,7 @@
 package steps.store;
 
 import api.store.models.Order;
+import enums.Status;
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import utils.BaseUtility;
@@ -29,7 +30,7 @@ public class StoreAsserts {
         }));
         Assertions.assertThat(response.keySet().stream().distinct())
                   .as("Inventory map keys should match order status values")
-                  .containsExactlyInAnyOrderElementsOf(Arrays.stream(Order.Status.values()).map(Enum::name).toList());
+                  .containsExactlyInAnyOrderElementsOf(Arrays.stream(Status.values()).map(Enum::name).toList());
     }
 
     public static void assertOrdersMatch(Order actualOrder, Order expectedOrder) {

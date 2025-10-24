@@ -1,7 +1,7 @@
 package store.create;
 
 import api.BaseClient;
-import helper.OrderCreationalHelpers;
+import helpers.OrderCreationalHelpers;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.annotations.DataProvider;

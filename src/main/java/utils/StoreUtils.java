@@ -1,6 +1,6 @@
 package utils;
 
-import api.store.models.Order;
+import enums.Status;
 
 import java.util.Random;
 
@@ -12,8 +12,8 @@ public final class StoreUtils {
         BaseUtility.getException();
     }
 
-    public static Order.Status getRandomStatus() {
-        return Order.Status.values()[RANDOM.nextInt(Order.Status.values().length)];
+    public static Status getRandomStatus() {
+        return Status.values()[RANDOM.nextInt(Status.values().length)];
     }
 
 }

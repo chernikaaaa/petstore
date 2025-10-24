@@ -1,6 +1,7 @@
 package api.store.models;
 
 import com.beust.jcommander.internal.Nullable;
+import enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,11 +25,5 @@ public class Order {
     private Status status;
     @Nullable
     private Boolean complete;
-
-    public enum Status {
-        placed,
-        approved,
-        delivered
-    }
 
 }

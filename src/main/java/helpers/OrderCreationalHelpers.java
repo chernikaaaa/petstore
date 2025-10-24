@@ -1,5 +1,5 @@
 
-package helper;
+package helpers;
 
 import api.store.models.Order;
 import io.qameta.allure.Step;

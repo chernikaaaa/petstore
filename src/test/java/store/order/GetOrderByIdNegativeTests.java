@@ -3,7 +3,7 @@ package store.order;
 import api.BaseClient;
 import api.store.StoreApi;
 import endpoints.Endpoints;
-import helper.OrderCreationalHelpers;
+import helpers.OrderCreationalHelpers;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.annotations.DataProvider;

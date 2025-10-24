@@ -19,7 +19,7 @@ public class DeleteOrderPositiveTests extends BaseStoreTest {
     @BeforeClass(alwaysRun = true)
     public void setupPreconditions() {
         var orderId = generateRandomOrderId();
-        orderToDelete = helper.OrderCreationalHelpers.createRandomOrder(orderId);
+        orderToDelete = helpers.OrderCreationalHelpers.createRandomOrder(orderId);
         StoreSteps.placeOrder(orderToDelete);
         //TODO add waiter with check db that order is created instead of polling get order by id
         StoreWaiters.waitForOrderBeCreated(orderId);
