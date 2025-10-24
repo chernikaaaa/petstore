@@ -21,4 +21,4 @@ Navigate to:
 target/surefire-reports
 Locate the file:
 index.html
-Open it in your browser to view the test results — including passed and failed tests, execution time, and logs.
+Open it in your browser to view the test results - including passed and failed tests, execution time, and logs.
