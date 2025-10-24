@@ -24,6 +24,7 @@ public class GetOrderByIdPositiveTests extends BaseStoreOrderTest {
     @BeforeClass(alwaysRun = true)
     private void setup() {
         orderId = generateRandomOrderId();
+        createdOrderIds.add(orderId);
         var randomOrder = OrderCreationalHelpers.createRandomOrder(orderId);
         placedOrder = StoreSteps.placeOrderSuccessfully(randomOrder);
         //TODO add waiter with check db that order is created instead of polling get order by id

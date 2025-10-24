@@ -29,7 +29,8 @@ public class PlaceOrderPositiveTests extends BaseStoreOrderTest {
     @Test(description = "Place order without id successfully")
     public void placeOrderWithEmptyBodySuccessTest() {
         var randomOrder = Order.builder().build();
-        StoreSteps.placeOrder(randomOrder);
+        var order = StoreSteps.placeOrderSuccessfully(randomOrder);
+        createdOrderIds.add(order.getId());
     }
 
     @Test(description = "Create order schema validation test")

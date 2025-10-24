@@ -1,28 +1,24 @@
-# Petstore Store API — Rest Assured + TestNG (Java 21)
+Project Setup
 
-This is a minimal but production‑style test project for Swagger Petstore **/store** endpoints.
+Download or clone this project from the repository.
+Import it into your IDE (e.g., IntelliJ IDEA) as a Maven project.
+Wait until all Maven dependencies are downloaded automatically.
+You can also trigger it manually by right-clicking on the project and selecting
+“Reload Maven Project” or running:
+mvn clean install
+Once dependencies are resolved, the project is ready to run.
 
-- **Tech:** Java 21 · Maven · TestNG · Rest-Assured · Allure · Logback
-- **Endpoints covered:** `/store/inventory`, `/store/order` (POST, GET, DELETE)
-- **Negatives:** `400 Invalid ID supplied`, `404 Order not found`
+Test Execution and Reporting
 
-## Run
+Step 1. Run the Tests
+To execute all tests, use the following command:
+mvn clean test
+This command will clean previous results and run all tests from scratch.
 
-```bash
-mvn -q -DbaseUrl=https://petstore.swagger.io/v2 -Dthreads=3 test
-```
-
-> Defaults: `baseUrl=https://petstore.swagger.io/v2`, `threads=1`
-
-## Reports
-
-After run, generate Allure report:
-
-```bash
-allure serve target/allure-results
-```
-
-## Notes
-
-- `GET/DELETE /store/order/{orderId}` treat 1..10 as **valid**; other values → **400**.  
-- To get **404**, the test creates an order, deletes it, then fetches it again.
+Step 2. Open the Test Report
+After the tests finish, Maven Surefire will automatically generate an HTML report.
+Navigate to:
+target/surefire-reports
+Locate the file:
+index.html
+Open it in your browser to view the test results — including passed and failed tests, execution time, and logs.

@@ -4,6 +4,7 @@ import api.store.StoreApi;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
+import org.testng.annotations.AfterSuite;
 import utils.Utils;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 @Feature("Store")
 public abstract class BaseStoreOrderTest {
 
+    protected ArrayList<Integer> createdOrderIds = new ArrayList<>();
     protected ArrayList<Integer> toDeleteOrderIds = new ArrayList<>();
 
     @Step("Generate random order id")
@@ -21,6 +23,14 @@ public abstract class BaseStoreOrderTest {
             nextId = nextId + Utils.getRandomInt() + 2000;
         }
         return nextId;
+    }
+
+    @AfterSuite(alwaysRun = true)
+    private void cleanUpCreatedOrders() {
+        createdOrderIds.forEach(id -> {
+            StoreApi.deleteOrder(id);
+            //TODO add waiter with check that order is really deleted from db
+        });
     }
 
 }
