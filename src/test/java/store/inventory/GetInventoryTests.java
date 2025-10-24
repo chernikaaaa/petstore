@@ -13,7 +13,7 @@ import java.util.Map;
 
 import static org.hamcrest.Matchers.isA;
 
-@Epic("Petstore")
+@Epic("Pet store")
 @Feature("Store")
 public class GetInventoryTests extends BaseStoreOrderTest {
 

@@ -18,7 +18,7 @@ import java.util.Random;
 
 import static io.restassured.RestAssured.given;
 
-@Epic("Petstore")
+@Epic("Pet store")
 @Feature("Store")
 public class GetOrderByIdNegativeTests extends BaseStoreOrderTest {
 

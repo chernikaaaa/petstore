@@ -8,7 +8,7 @@ import utils.Utils;
 
 import java.util.ArrayList;
 
-@Epic("Petstore")
+@Epic("Pet store")
 @Feature("Store")
 public abstract class BaseStoreOrderTest {
 

@@ -11,7 +11,7 @@ import steps.store.StoreSteps;
 import steps.store.StoreWaiters;
 import store.order.BaseStoreOrderTest;
 
-@Epic("Petstore")
+@Epic("Pet store")
 @Feature("Store")
 public class PlaceOrderPositiveTests extends BaseStoreOrderTest {
 

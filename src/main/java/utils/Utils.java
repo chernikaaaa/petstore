@@ -37,24 +37,6 @@ public final class Utils {
         return result;
     }
 
-    // Only letters
-    public static String getRandomStringOnlyWithLetters(int length) {
-        return IntStream.range(0, length)
-                        .mapToObj(i -> String.valueOf(ALPHA.charAt(RANDOM.nextInt(ALPHA.length()))))
-                        .collect(Collectors.joining());
-    }
-
-    // Letters + numbers (must contain at least one of each)
-    public static String getRandomStringWithLettersAndNumbers(int length) {
-        String result;
-        do {
-            result = IntStream.range(0, length)
-                              .mapToObj(i -> String.valueOf(ALPHA_PLUS_NUMS.charAt(RANDOM.nextInt(ALPHA_PLUS_NUMS.length()))))
-                              .collect(Collectors.joining());
-        } while (!result.matches(".*[A-Za-z].*") || !result.matches(".*\\d.*"));
-        return result;
-    }
-
     public static int getRandomInt() {
         var min = 10;
         var max = 1000;
@@ -63,12 +45,6 @@ public final class Utils {
 
     public static int getRandomInt(int min, int max) {
         return RANDOM.nextInt((max - min) + 1) + min;
-    }
-
-    public static String getRandomStringOnlyWithNumbers(int length) {
-        return IntStream.range(0, length)
-                        .mapToObj(i -> String.valueOf(DIGITS.charAt(RANDOM.nextInt(DIGITS.length()))))
-                        .collect(Collectors.joining());
     }
 
     public static String toJson(Map<String, Object> order) {

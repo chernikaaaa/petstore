@@ -5,7 +5,7 @@
     <groupId>qa.petstore</groupId>
     <artifactId>store-tests</artifactId>
     <version>1.0.0</version>
-    <name>Petstore Store API Tests</name>
+    <name>Pet store Store API Tests</name>
 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
